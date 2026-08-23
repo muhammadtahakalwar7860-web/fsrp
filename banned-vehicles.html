@@ -440,106 +440,181 @@
     font-size:clamp(1.9rem, 4vw, 2.6rem); color:var(--ink); letter-spacing:0.02em;
   }
   .soon-card p{color:var(--ink-soft); margin-top:0.9rem; line-height:1.6; font-size:1rem;}
-  /* ---------- BANNED VEHICLES: toolbar ---------- */
+  /* ---------- BANNED VEHICLES: registry toolbar ---------- */
   :root{
-    --tier1:#2fb8a6; --tier2:#4f9fd6; --tier3:#e8963d; --tier4:#e2703f; --tier5:#d43f3f;
+    --tier1:#2f7d6f; --tier2:#3a6f8f; --tier3:#a8722a; --tier4:#a24e2a; --tier5:#a13333;
   }
   .veh-toolbar{
     background:var(--sky-deep);
-    padding:1.6rem clamp(1.25rem, 6vw, 5rem) 1.8rem;
+    padding:2.2rem clamp(1.25rem, 6vw, 5rem) 1.6rem;
     border-bottom:1px solid rgba(255,255,255,0.08);
   }
-  .veh-toolbar-inner{max-width:1240px; margin:0 auto;}
-  .veh-search-row{
-    display:flex; flex-wrap:wrap; align-items:center; justify-content:space-between;
-    gap:1rem; margin-bottom:1.1rem;
+  .veh-toolbar-inner{max-width:1180px; margin:0 auto;}
+  .veh-toolbar-top{
+    display:flex; flex-wrap:wrap; align-items:flex-end; justify-content:space-between;
+    gap:1.4rem; margin-bottom:1.5rem;
+    padding-bottom:1.4rem;
+    border-bottom:1px solid rgba(255,255,255,0.08);
+  }
+  .veh-total{
+    font-family:'Barlow Condensed',sans-serif; font-weight:700;
+    color:var(--white); font-size:2rem; line-height:1; margin-top:0.4rem;
+  }
+  .veh-total-of{
+    font-family:'Inter',sans-serif; font-weight:400; font-size:0.95rem;
+    color:rgba(255,255,255,0.45);
   }
   .veh-search{
-    flex:1 1 320px; max-width:460px;
-    display:flex; align-items:center; gap:0.7rem;
-    background:rgba(255,255,255,0.06);
-    border:1px solid rgba(255,255,255,0.12);
-    border-radius:999px;
-    padding:0.7rem 1.1rem;
+    flex:0 1 300px;
+    display:flex; align-items:center; gap:0.65rem;
+    background:rgba(255,255,255,0.05);
+    border:1px solid rgba(255,255,255,0.14);
+    border-radius:8px;
+    padding:0.6rem 0.9rem;
   }
-  .veh-search svg{width:17px; height:17px; color:rgba(255,255,255,0.45); flex-shrink:0;}
+  .veh-search svg{width:15px; height:15px; color:rgba(255,255,255,0.4); flex-shrink:0;}
   .veh-search input{
     background:none; border:none; outline:none;
-    color:var(--white); font-family:'Inter',sans-serif; font-size:0.92rem;
+    color:var(--white); font-family:'Inter',sans-serif; font-size:0.87rem;
     width:100%;
   }
-  .veh-search input::placeholder{color:rgba(255,255,255,0.4);}
-  .veh-count{
-    font-family:'JetBrains Mono',monospace; font-size:0.78rem;
-    color:rgba(255,255,255,0.55); white-space:nowrap;
-  }
-  .veh-count span{color:var(--teal); font-weight:500;}
+  .veh-search input::placeholder{color:rgba(255,255,255,0.35);}
 
-  .chip-row{
-    display:flex; flex-wrap:wrap; gap:0.55rem;
-    margin-top:0.7rem;
+  .veh-filter-row{
+    display:flex; align-items:center; flex-wrap:wrap; gap:0.9rem;
+    margin-bottom:1.3rem;
   }
-  .chip-row:first-of-type{margin-top:0;}
-  .chip{
-    display:inline-flex; align-items:center; gap:0.4rem;
-    background:rgba(255,255,255,0.06);
-    border:1px solid rgba(255,255,255,0.1);
-    color:rgba(255,255,255,0.72);
-    font-family:'Inter',sans-serif; font-size:0.8rem; font-weight:600;
-    padding:0.42rem 0.85rem;
-    border-radius:999px;
-    transition:background 0.2s ease, border-color 0.2s ease, color 0.2s ease;
+  .filter-label{
+    font-family:'JetBrains Mono',monospace; font-size:0.68rem;
+    letter-spacing:0.1em; text-transform:uppercase;
+    color:rgba(255,255,255,0.4); flex-shrink:0;
   }
-  .chip:hover{background:rgba(255,255,255,0.1); color:var(--white);}
-  .chip.active{
-    background:var(--teal); border-color:var(--teal); color:var(--sky-deep);
+  .tier-filter{
+    display:flex; flex-wrap:wrap; gap:0.4rem;
   }
-  .chip .dot{
-    width:8px; height:8px; border-radius:50%; flex-shrink:0;
-  }
-  .chip.active .dot{background:var(--sky-deep) !important;}
-  .dot.tier-1{background:var(--tier1);}
-  .dot.tier-2{background:var(--tier2);}
-  .dot.tier-3{background:var(--tier3);}
-  .dot.tier-4{background:var(--tier4);}
-  .dot.tier-5{background:var(--tier5);}
-
-  /* ---------- BANNED VEHICLES: panels ---------- */
-  .veh-wrap{padding-top:3.5rem;}
-  .veh-grid{align-items:start;}
-  .veh-panel .cat-count{color:var(--teal-dim); font-weight:600;}
-  .veh-list li{
-    display:flex; align-items:center; gap:0.8rem;
-    padding:0.65rem 0;
-  }
-  .veh-list li.filtered-out{display:none;}
-  .veh-panel.all-filtered{display:none;}
-  .tier-badge{
-    flex-shrink:0;
-    min-width:30px; height:24px; padding:0 0.4rem;
+  .tier-opt{
+    font-family:'Inter',sans-serif; font-size:0.78rem; font-weight:500;
+    color:rgba(255,255,255,0.6);
+    background:transparent;
+    border:1px solid rgba(255,255,255,0.14);
+    padding:0.35rem 0.75rem;
     border-radius:6px;
-    display:flex; align-items:center; justify-content:center;
-    font-family:'JetBrains Mono',monospace; font-size:0.72rem; font-weight:500;
-    color:var(--white);
+    transition:background 0.15s ease, border-color 0.15s ease, color 0.15s ease;
   }
-  .tier-badge.tier-1{background:var(--tier1);}
-  .tier-badge.tier-2{background:var(--tier2);}
-  .tier-badge.tier-3{background:var(--tier3);}
-  .tier-badge.tier-4{background:var(--tier4);}
-  .tier-badge.tier-5{background:var(--tier5);}
-  .veh-name{color:var(--ink); font-size:0.93rem; line-height:1.4;}
+  .tier-opt:hover{border-color:rgba(255,255,255,0.32); color:var(--white);}
+  .tier-opt.active{
+    background:rgba(47,184,166,0.14);
+    border-color:var(--teal);
+    color:var(--teal);
+  }
+
+  .jump-nav{
+    display:flex; flex-wrap:wrap; gap:0 1.3rem;
+  }
+  .jump-link{
+    font-family:'Inter',sans-serif; font-size:0.82rem; font-weight:600;
+    color:rgba(255,255,255,0.5);
+    padding:0.3rem 0;
+    border-bottom:1px solid transparent;
+    transition:color 0.15s ease, border-color 0.15s ease;
+  }
+  .jump-link:hover{color:var(--white); border-color:var(--teal);}
+
+  /* ---------- BANNED VEHICLES: registry table ---------- */
+  .veh-wrap{padding-top:3rem;}
+  .veh-categories{
+    max-width:1180px; margin:0 auto;
+    display:flex; flex-direction:column; gap:2.6rem;
+  }
+  .veh-category.all-filtered{display:none;}
+  .veh-category-head{
+    display:flex; align-items:center; gap:1rem;
+    margin-bottom:1rem;
+  }
+  .cat-mono{
+    flex-shrink:0;
+    width:38px; height:38px;
+    border-radius:8px;
+    background:var(--sky-deep);
+    color:var(--teal);
+    display:flex; align-items:center; justify-content:center;
+    font-family:'JetBrains Mono',monospace; font-weight:500; font-size:0.82rem;
+    letter-spacing:0.03em;
+  }
+  .veh-category-head h2{
+    font-family:'Barlow Condensed',sans-serif; font-weight:700; text-transform:uppercase;
+    letter-spacing:0.02em; font-size:1.3rem; color:var(--ink); line-height:1.1;
+  }
+  .cat-sub{
+    display:block;
+    font-family:'JetBrains Mono',monospace; font-size:0.68rem;
+    letter-spacing:0.05em; text-transform:uppercase;
+    color:var(--ink-soft); margin-top:2px;
+  }
+  .cat-count{color:var(--teal-dim); font-weight:600;}
+
+  .veh-table{
+    width:100%;
+    border-collapse:collapse;
+    background:var(--white);
+    border:1px solid var(--sand-dim);
+    border-radius:10px;
+    overflow:hidden;
+  }
+  .veh-table thead th{
+    text-align:left;
+    font-family:'JetBrains Mono',monospace; font-size:0.66rem;
+    letter-spacing:0.08em; text-transform:uppercase;
+    color:var(--ink-soft); font-weight:500;
+    background:var(--sand);
+    padding:0.65rem 1.1rem;
+    border-bottom:1px solid var(--sand-dim);
+  }
+  .veh-table thead th:last-child{width:140px;}
+  .veh-table tbody tr{
+    border-bottom:1px solid var(--sand-dim);
+    transition:background 0.12s ease;
+  }
+  .veh-table tbody tr:last-child{border-bottom:none;}
+  .veh-table tbody tr:nth-child(even){background:rgba(230,224,208,0.28);}
+  .veh-table tbody tr:hover{background:rgba(47,184,166,0.06);}
+  .veh-table tbody tr.filtered-out{display:none;}
+  .veh-name-cell{
+    padding:0.62rem 1.1rem;
+    color:var(--ink); font-size:0.88rem; font-weight:500;
+  }
+  .veh-tier-cell{padding:0.62rem 1.1rem;}
+
+  .tier-tag{
+    display:inline-flex; align-items:center; gap:0.4rem;
+    font-family:'JetBrains Mono',monospace; font-size:0.72rem; font-weight:500;
+    padding:0.22rem 0.6rem;
+    border-radius:5px;
+  }
+  .tier-tag::before{
+    content:''; width:6px; height:6px; border-radius:50%; flex-shrink:0;
+  }
+  .tier-tag.tier-1{background:rgba(47,125,111,0.1); color:var(--tier1);}
+  .tier-tag.tier-1::before{background:var(--tier1);}
+  .tier-tag.tier-2{background:rgba(58,111,143,0.1); color:var(--tier2);}
+  .tier-tag.tier-2::before{background:var(--tier2);}
+  .tier-tag.tier-3{background:rgba(168,114,42,0.1); color:var(--tier3);}
+  .tier-tag.tier-3::before{background:var(--tier3);}
+  .tier-tag.tier-4{background:rgba(162,78,42,0.1); color:var(--tier4);}
+  .tier-tag.tier-4::before{background:var(--tier4);}
+  .tier-tag.tier-5{background:rgba(161,51,51,0.1); color:var(--tier5);}
+  .tier-tag.tier-5::before{background:var(--tier5);}
 
   .veh-empty{
-    text-align:center;
-    color:var(--ink-soft);
-    font-size:0.95rem;
-    padding:2rem 0 0.5rem;
-    max-width:1240px; margin:0 auto;
+    text-align:center; color:var(--ink-soft); font-size:0.95rem;
+    padding:2rem 0 0.5rem; max-width:1180px; margin:0 auto;
   }
 
   @media (max-width:640px){
-    .veh-search-row{flex-direction:column; align-items:stretch;}
-    .veh-count{text-align:left;}
+    .veh-toolbar-top{align-items:flex-start;}
+    .veh-search{flex:1 1 auto; width:100%;}
+    .veh-table thead th:first-child{padding-left:0.9rem;}
+    .veh-name-cell, .veh-tier-cell{padding-left:0.9rem; padding-right:0.9rem;}
   }
 
 </style>
@@ -590,126 +665,167 @@
 
 <section class="veh-toolbar">
   <div class="veh-toolbar-inner">
-    <div class="veh-search-row">
-      <div class="veh-search">
-        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="11" cy="11" r="8"></circle><line x1="21" y1="21" x2="16.65" y2="16.65"></line></svg>
-        <input type="text" id="vehSearch" placeholder="Search vehicles by name..." autocomplete="off">
+    <div class="veh-toolbar-top">
+      <div>
+        <span class="eyebrow" style="color:var(--teal);">Vehicle Restriction Registry</span>
+        <div class="veh-total"><span id="vehVisibleCount">124</span><span class="veh-total-of"> / 124 vehicles</span></div>
       </div>
-      <div class="veh-count"><span id="vehVisibleCount">124</span> / 124 vehicles</div>
+      <div class="veh-search">
+        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"><circle cx="11" cy="11" r="8"></circle><line x1="21" y1="21" x2="16.65" y2="16.65"></line></svg>
+        <input type="text" id="vehSearch" placeholder="Search by vehicle name" autocomplete="off">
+      </div>
     </div>
 
-    <div class="chip-row" id="tierChips">
-      <button class="chip tier-chip active" data-tier="all">All Tiers</button>
-      <button class="chip tier-chip" data-tier="1"><span class="dot tier-1"></span>Tier 1</button>
-      <button class="chip tier-chip" data-tier="2"><span class="dot tier-2"></span>Tier 2</button>
-      <button class="chip tier-chip" data-tier="3"><span class="dot tier-3"></span>Tier 3</button>
-      <button class="chip tier-chip" data-tier="4"><span class="dot tier-4"></span>Tier 4</button>
-      <button class="chip tier-chip" data-tier="5"><span class="dot tier-5"></span>Tier 5</button>
+    <div class="veh-filter-row">
+      <span class="filter-label">Classification</span>
+      <div class="tier-filter" id="tierChips">
+        <button class="tier-opt active" data-tier="all">All</button>
+        <button class="tier-opt" data-tier="1">Tier 1</button>
+        <button class="tier-opt" data-tier="2">Tier 2</button>
+        <button class="tier-opt" data-tier="3">Tier 3</button>
+        <button class="tier-opt" data-tier="4">Tier 4</button>
+        <button class="tier-opt" data-tier="5">Tier 5</button>
+      </div>
     </div>
 
-    <div class="chip-row">
-      <button class="chip cat-chip" data-target="cat-classic">🏎️ Classic</button>
-      <button class="chip cat-chip" data-target="cat-coupe">🚗 Coupe</button>
-      <button class="chip cat-chip" data-target="cat-hyper">🚀 Hyper</button>
-      <button class="chip cat-chip" data-target="cat-pick-up">🛻 Pick up</button>
-      <button class="chip cat-chip" data-target="cat-powersports">🏍️ Powersports</button>
-      <button class="chip cat-chip" data-target="cat-sedan">🚘 Sedan</button>
-      <button class="chip cat-chip" data-target="cat-super">⚡ Super</button>
-    </div>
+    <nav class="jump-nav">
+      <a href="#cat-classic" class="jump-link" data-target="cat-classic">Classic</a>
+      <a href="#cat-coupe" class="jump-link" data-target="cat-coupe">Coupe</a>
+      <a href="#cat-hyper" class="jump-link" data-target="cat-hyper">Hyper</a>
+      <a href="#cat-pick-up" class="jump-link" data-target="cat-pick-up">Pick up</a>
+      <a href="#cat-powersports" class="jump-link" data-target="cat-powersports">Powersports</a>
+      <a href="#cat-sedan" class="jump-link" data-target="cat-sedan">Sedan</a>
+      <a href="#cat-super" class="jump-link" data-target="cat-super">Super</a>
+    </nav>
   </div>
 </section>
 
 <section class="rules-wrap veh-wrap">
-  <div class="rules-grid veh-grid" id="vehGrid">
-    <div class="rules-panel veh-panel" id="cat-classic" data-count="12">
-      <div class="rules-panel-head">
-        <div class="num-icon">🏎️</div>
+  <div class="veh-categories" id="vehGrid">
+    <div class="veh-category" id="cat-classic" data-count="12">
+      <div class="veh-category-head">
+        <span class="cat-mono">CL</span>
         <div>
           <h2>Classic</h2>
-          <span>Vintage & retro builds &middot; <span class="cat-count">12</span> banned</span>
+          <span class="cat-sub">Vintage & retro builds &middot; <span class="cat-count">12</span> listed</span>
         </div>
       </div>
-      <ul class="rule-list veh-list">
-        <li data-name="1985 bnw m 635csi" data-tier="2"><span class="tier-badge tier-2">T2</span><span class="veh-name">1985 BNW M 635CSi</span></li><li data-name="1967 chavy corvette sting ray" data-tier="4"><span class="tier-badge tier-4">T4</span><span class="veh-name">1967 Chavy Corvette Sting Ray</span></li><li data-name="1987 detomato pantera gt5-s" data-tier="3"><span class="tier-badge tier-3">T3</span><span class="veh-name">1987 DeTomato Pantera GT5-S</span></li><li data-name="1970 dodje charger r/t" data-tier="1"><span class="tier-badge tier-1">T1</span><span class="veh-name">1970 Dodje Charger R/T</span></li><li data-name="1993 fard mustang svt cobra r" data-tier="2"><span class="tier-badge tier-2">T2</span><span class="veh-name">1993 Fard Mustang SVT Cobra R</span></li><li data-name="1993 fard mustang svt cobra r" data-tier="3"><span class="tier-badge tier-3">T3</span><span class="veh-name">1993 Fard Mustang SVT Cobra R</span></li><li data-name="1986 lamburghina countach 5000 qv" data-tier="5"><span class="tier-badge tier-5">T5</span><span class="veh-name">1986 Lamburghina Countach 5000 QV</span></li><li data-name="1974 lancer stratos hf stradale" data-tier="1"><span class="tier-badge tier-1">T1</span><span class="veh-name">1974 Lancer Stratos HF Stradale</span></li><li data-name="2002 naan skyline r34 gt-r v-spec ii nür" data-tier="5"><span class="tier-badge tier-5">T5</span><span class="veh-name">2002 Naan Skyline R34 GT-R V-Spec II Nür</span></li><li data-name="1970 plywood roadrunner superbird" data-tier="3"><span class="tier-badge tier-3">T3</span><span class="veh-name">1970 Plywood Roadrunner Superbird</span></li><li data-name="1987 pohrse 930 turbo slantnose" data-tier="2"><span class="tier-badge tier-2">T2</span><span class="veh-name">1987 Pohrse 930 Turbo Slantnose</span></li><li data-name="1987 pohrse 911 turbo" data-tier="1"><span class="tier-badge tier-1">T1</span><span class="veh-name">1987 Pohrse 911 Turbo</span></li>
-      </ul>
+      <table class="veh-table">
+        <thead>
+          <tr><th>Vehicle</th><th>Classification</th></tr>
+        </thead>
+        <tbody>
+          <tr data-name="1985 bnw m 635csi" data-tier="2"><td class="veh-name-cell">1985 BNW M 635CSi</td><td class="veh-tier-cell"><span class="tier-tag tier-2">Tier 2</span></td></tr><tr data-name="1967 chavy corvette sting ray" data-tier="4"><td class="veh-name-cell">1967 Chavy Corvette Sting Ray</td><td class="veh-tier-cell"><span class="tier-tag tier-4">Tier 4</span></td></tr><tr data-name="1987 detomato pantera gt5-s" data-tier="3"><td class="veh-name-cell">1987 DeTomato Pantera GT5-S</td><td class="veh-tier-cell"><span class="tier-tag tier-3">Tier 3</span></td></tr><tr data-name="1970 dodje charger r/t" data-tier="1"><td class="veh-name-cell">1970 Dodje Charger R/T</td><td class="veh-tier-cell"><span class="tier-tag tier-1">Tier 1</span></td></tr><tr data-name="1993 fard mustang svt cobra r" data-tier="2"><td class="veh-name-cell">1993 Fard Mustang SVT Cobra R</td><td class="veh-tier-cell"><span class="tier-tag tier-2">Tier 2</span></td></tr><tr data-name="1993 fard mustang svt cobra r" data-tier="3"><td class="veh-name-cell">1993 Fard Mustang SVT Cobra R</td><td class="veh-tier-cell"><span class="tier-tag tier-3">Tier 3</span></td></tr><tr data-name="1986 lamburghina countach 5000 qv" data-tier="5"><td class="veh-name-cell">1986 Lamburghina Countach 5000 QV</td><td class="veh-tier-cell"><span class="tier-tag tier-5">Tier 5</span></td></tr><tr data-name="1974 lancer stratos hf stradale" data-tier="1"><td class="veh-name-cell">1974 Lancer Stratos HF Stradale</td><td class="veh-tier-cell"><span class="tier-tag tier-1">Tier 1</span></td></tr><tr data-name="2002 naan skyline r34 gt-r v-spec ii nür" data-tier="5"><td class="veh-name-cell">2002 Naan Skyline R34 GT-R V-Spec II Nür</td><td class="veh-tier-cell"><span class="tier-tag tier-5">Tier 5</span></td></tr><tr data-name="1970 plywood roadrunner superbird" data-tier="3"><td class="veh-name-cell">1970 Plywood Roadrunner Superbird</td><td class="veh-tier-cell"><span class="tier-tag tier-3">Tier 3</span></td></tr><tr data-name="1987 pohrse 930 turbo slantnose" data-tier="2"><td class="veh-name-cell">1987 Pohrse 930 Turbo Slantnose</td><td class="veh-tier-cell"><span class="tier-tag tier-2">Tier 2</span></td></tr><tr data-name="1987 pohrse 911 turbo" data-tier="1"><td class="veh-name-cell">1987 Pohrse 911 Turbo</td><td class="veh-tier-cell"><span class="tier-tag tier-1">Tier 1</span></td></tr>
+        </tbody>
+      </table>
     </div>
 
-    <div class="rules-panel veh-panel" id="cat-coupe" data-count="20">
-      <div class="rules-panel-head">
-        <div class="num-icon">🚗</div>
+    <div class="veh-category" id="cat-coupe" data-count="20">
+      <div class="veh-category-head">
+        <span class="cat-mono">CP</span>
         <div>
           <h2>Coupe</h2>
-          <span>Two-door performance &middot; <span class="cat-count">20</span> banned</span>
+          <span class="cat-sub">Two-door performance &middot; <span class="cat-count">20</span> listed</span>
         </div>
       </div>
-      <ul class="rule-list veh-list">
-        <li data-name="2017 aero nomad tactical" data-tier="5"><span class="tier-badge tier-5">T5</span><span class="veh-name">2017 Aero Nomad Tactical</span></li><li data-name="2004 chavy corvette z06" data-tier="3"><span class="tier-badge tier-3">T3</span><span class="veh-name">2004 Chavy Corvette Z06</span></li><li data-name="2012 chavy camaro zl1" data-tier="4"><span class="tier-badge tier-4">T4</span><span class="veh-name">2012 Chavy Camaro ZL1</span></li><li data-name="2013 chavy corvette zr1" data-tier="1"><span class="tier-badge tier-1">T1</span><span class="veh-name">2013 Chavy Corvette ZR1</span></li><li data-name="2019 chavy corvette z06" data-tier="2"><span class="tier-badge tier-2">T2</span><span class="veh-name">2019 Chavy Corvette Z06</span></li><li data-name="2022 chavy corvette" data-tier="1"><span class="tier-badge tier-1">T1</span><span class="veh-name">2022 Chavy Corvette</span></li><li data-name="daisen 300rz" data-tier="3"><span class="tier-badge tier-3">T3</span><span class="veh-name">Daisen 300RZ</span></li><li data-name="2011 edison roadster sport 2.5" data-tier="4"><span class="tier-badge tier-4">T4</span><span class="veh-name">2011 Edison Roadster Sport 2.5</span></li><li data-name="2021 fard mustang gt500 code red" data-tier="4"><span class="tier-badge tier-4">T4</span><span class="veh-name">2021 Fard Mustang GT500 Code Red</span></li><li data-name="2000 hibiscus 340r" data-tier="5"><span class="tier-badge tier-5">T5</span><span class="veh-name">2000 Hibiscus 340R</span></li><li data-name="2011 hibiscus evora s" data-tier="1"><span class="tier-badge tier-1">T1</span><span class="veh-name">2011 Hibiscus Evora S</span></li><li data-name="2019 hibiscus 3-eleven" data-tier="5"><span class="tier-badge tier-5">T5</span><span class="veh-name">2019 Hibiscus 3-Eleven</span></li><li data-name="2002 mazday rx-7 sprint-r" data-tier="2"><span class="tier-badge tier-2">T2</span><span class="veh-name">2002 Mazday RX-7 Sprint-R</span></li><li data-name="2009 naan 350z nizmo" data-tier="3"><span class="tier-badge tier-3">T3</span><span class="veh-name">2009 Naan 350Z Nizmo</span></li><li data-name="2017 naan 370z nizmo" data-tier="3"><span class="tier-badge tier-3">T3</span><span class="veh-name">2017 Naan 370Z Nizmo</span></li><li data-name="2020 york magnus 520r" data-tier="4"><span class="tier-badge tier-4">T4</span><span class="veh-name">2020 York Magnus 520R</span></li><li data-name="york magnus r" data-tier="4"><span class="tier-badge tier-4">T4</span><span class="veh-name">York Magnus R</span></li><li data-name="2001 toyoto mr2" data-tier="3"><span class="tier-badge tier-3">T3</span><span class="veh-name">2001 Toyoto MR2</span></li><li data-name="2019 toyoto gt86" data-tier="1"><span class="tier-badge tier-1">T1</span><span class="veh-name">2019 Toyoto GT86</span></li><li data-name="2021 toyoto supra" data-tier="2"><span class="tier-badge tier-2">T2</span><span class="veh-name">2021 Toyoto Supra</span></li>
-      </ul>
+      <table class="veh-table">
+        <thead>
+          <tr><th>Vehicle</th><th>Classification</th></tr>
+        </thead>
+        <tbody>
+          <tr data-name="2017 aero nomad tactical" data-tier="5"><td class="veh-name-cell">2017 Aero Nomad Tactical</td><td class="veh-tier-cell"><span class="tier-tag tier-5">Tier 5</span></td></tr><tr data-name="2004 chavy corvette z06" data-tier="3"><td class="veh-name-cell">2004 Chavy Corvette Z06</td><td class="veh-tier-cell"><span class="tier-tag tier-3">Tier 3</span></td></tr><tr data-name="2012 chavy camaro zl1" data-tier="4"><td class="veh-name-cell">2012 Chavy Camaro ZL1</td><td class="veh-tier-cell"><span class="tier-tag tier-4">Tier 4</span></td></tr><tr data-name="2013 chavy corvette zr1" data-tier="1"><td class="veh-name-cell">2013 Chavy Corvette ZR1</td><td class="veh-tier-cell"><span class="tier-tag tier-1">Tier 1</span></td></tr><tr data-name="2019 chavy corvette z06" data-tier="2"><td class="veh-name-cell">2019 Chavy Corvette Z06</td><td class="veh-tier-cell"><span class="tier-tag tier-2">Tier 2</span></td></tr><tr data-name="2022 chavy corvette" data-tier="1"><td class="veh-name-cell">2022 Chavy Corvette</td><td class="veh-tier-cell"><span class="tier-tag tier-1">Tier 1</span></td></tr><tr data-name="daisen 300rz" data-tier="3"><td class="veh-name-cell">Daisen 300RZ</td><td class="veh-tier-cell"><span class="tier-tag tier-3">Tier 3</span></td></tr><tr data-name="2011 edison roadster sport 2.5" data-tier="4"><td class="veh-name-cell">2011 Edison Roadster Sport 2.5</td><td class="veh-tier-cell"><span class="tier-tag tier-4">Tier 4</span></td></tr><tr data-name="2021 fard mustang gt500 code red" data-tier="4"><td class="veh-name-cell">2021 Fard Mustang GT500 Code Red</td><td class="veh-tier-cell"><span class="tier-tag tier-4">Tier 4</span></td></tr><tr data-name="2000 hibiscus 340r" data-tier="5"><td class="veh-name-cell">2000 Hibiscus 340R</td><td class="veh-tier-cell"><span class="tier-tag tier-5">Tier 5</span></td></tr><tr data-name="2011 hibiscus evora s" data-tier="1"><td class="veh-name-cell">2011 Hibiscus Evora S</td><td class="veh-tier-cell"><span class="tier-tag tier-1">Tier 1</span></td></tr><tr data-name="2019 hibiscus 3-eleven" data-tier="5"><td class="veh-name-cell">2019 Hibiscus 3-Eleven</td><td class="veh-tier-cell"><span class="tier-tag tier-5">Tier 5</span></td></tr><tr data-name="2002 mazday rx-7 sprint-r" data-tier="2"><td class="veh-name-cell">2002 Mazday RX-7 Sprint-R</td><td class="veh-tier-cell"><span class="tier-tag tier-2">Tier 2</span></td></tr><tr data-name="2009 naan 350z nizmo" data-tier="3"><td class="veh-name-cell">2009 Naan 350Z Nizmo</td><td class="veh-tier-cell"><span class="tier-tag tier-3">Tier 3</span></td></tr><tr data-name="2017 naan 370z nizmo" data-tier="3"><td class="veh-name-cell">2017 Naan 370Z Nizmo</td><td class="veh-tier-cell"><span class="tier-tag tier-3">Tier 3</span></td></tr><tr data-name="2020 york magnus 520r" data-tier="4"><td class="veh-name-cell">2020 York Magnus 520R</td><td class="veh-tier-cell"><span class="tier-tag tier-4">Tier 4</span></td></tr><tr data-name="york magnus r" data-tier="4"><td class="veh-name-cell">York Magnus R</td><td class="veh-tier-cell"><span class="tier-tag tier-4">Tier 4</span></td></tr><tr data-name="2001 toyoto mr2" data-tier="3"><td class="veh-name-cell">2001 Toyoto MR2</td><td class="veh-tier-cell"><span class="tier-tag tier-3">Tier 3</span></td></tr><tr data-name="2019 toyoto gt86" data-tier="1"><td class="veh-name-cell">2019 Toyoto GT86</td><td class="veh-tier-cell"><span class="tier-tag tier-1">Tier 1</span></td></tr><tr data-name="2021 toyoto supra" data-tier="2"><td class="veh-name-cell">2021 Toyoto Supra</td><td class="veh-tier-cell"><span class="tier-tag tier-2">Tier 2</span></td></tr>
+        </tbody>
+      </table>
     </div>
 
-    <div class="rules-panel veh-panel" id="cat-hyper" data-count="19">
-      <div class="rules-panel-head">
-        <div class="num-icon">🚀</div>
+    <div class="veh-category" id="cat-hyper" data-count="19">
+      <div class="veh-category-head">
+        <span class="cat-mono">HY</span>
         <div>
           <h2>Hyper</h2>
-          <span>Top-end hypercars &middot; <span class="cat-count">19</span> banned</span>
+          <span class="cat-sub">Top-end hypercars &middot; <span class="cat-count">19</span> listed</span>
         </div>
       </div>
-      <ul class="rule-list veh-list">
-        <li data-name="2022 atone-mira valkyrie" data-tier="3"><span class="tier-badge tier-3">T3</span><span class="veh-name">2022 Atone-Mira Valkyrie</span></li><li data-name="2011 bulatti veyron super sport" data-tier="4"><span class="tier-badge tier-4">T4</span><span class="veh-name">2011 Bulatti Veyron Super Sport</span></li><li data-name="2017 bulatti chiron" data-tier="2"><span class="tier-badge tier-2">T2</span><span class="veh-name">2017 Bulatti Chiron</span></li><li data-name="2022 bulatti chiron super sport 300+" data-tier="5"><span class="tier-badge tier-5">T5</span><span class="veh-name">2022 Bulatti Chiron Super Sport 300+</span></li><li data-name="2010 css ultimate aero" data-tier="3"><span class="tier-badge tier-3">T3</span><span class="veh-name">2010 CSS Ultimate Aero</span></li><li data-name="1997 dallinger xp gte" data-tier="3"><span class="tier-badge tier-3">T3</span><span class="veh-name">1997 Dallinger XP GTE</span></li><li data-name="2021 edison roadster" data-tier="3"><span class="tier-badge tier-3">T3</span><span class="veh-name">2021 Edison Roadster</span></li><li data-name="2016 ethanol venom gt" data-tier="4"><span class="tier-badge tier-4">T4</span><span class="veh-name">2016 Ethanol Venom GT</span></li><li data-name="2021 ethanol venom f5" data-tier="5"><span class="tier-badge tier-5">T5</span><span class="veh-name">2021 Ethanol Venom F5</span></li><li data-name="2014 furai lafurai" data-tier="4"><span class="tier-badge tier-4">T4</span><span class="veh-name">2014 Furai LaFurai</span></li><li data-name="2014 koneggsaga agera r" data-tier="5"><span class="tier-badge tier-5">T5</span><span class="veh-name">2014 Koneggsaga Agera R</span></li><li data-name="2015 koneggsaga one:" data-tier="5"><span class="tier-badge tier-5">T5</span><span class="veh-name">2015 Koneggsaga One:</span></li><li data-name="2022 lunare intensa emozione" data-tier="4"><span class="tier-badge tier-4">T4</span><span class="veh-name">2022 Lunare Intensa Emozione</span></li><li data-name="1998 mcfaren f1" data-tier="1"><span class="tier-badge tier-1">T1</span><span class="veh-name">1998 McFaren F1</span></li><li data-name="2015 mcfaren p1" data-tier="3"><span class="tier-badge tier-3">T3</span><span class="veh-name">2015 McFaren P1</span></li><li data-name="2020 mcfaren speedtail" data-tier="2"><span class="tier-badge tier-2">T2</span><span class="veh-name">2020 McFaren Speedtail</span></li><li data-name="2018 paijani huayra" data-tier="2"><span class="tier-badge tier-2">T2</span><span class="veh-name">2018 Paijani Huayra</span></li><li data-name="2015 pohrse 918 spyder roadster" data-tier="4"><span class="tier-badge tier-4">T4</span><span class="veh-name">2015 Pohrse 918 Spyder Roadster</span></li><li data-name="2015 pohrse 918 weissach package" data-tier="5"><span class="tier-badge tier-5">T5</span><span class="veh-name">2015 Pohrse 918 Weissach Package</span></li>
-      </ul>
+      <table class="veh-table">
+        <thead>
+          <tr><th>Vehicle</th><th>Classification</th></tr>
+        </thead>
+        <tbody>
+          <tr data-name="2022 atone-mira valkyrie" data-tier="3"><td class="veh-name-cell">2022 Atone-Mira Valkyrie</td><td class="veh-tier-cell"><span class="tier-tag tier-3">Tier 3</span></td></tr><tr data-name="2011 bulatti veyron super sport" data-tier="4"><td class="veh-name-cell">2011 Bulatti Veyron Super Sport</td><td class="veh-tier-cell"><span class="tier-tag tier-4">Tier 4</span></td></tr><tr data-name="2017 bulatti chiron" data-tier="2"><td class="veh-name-cell">2017 Bulatti Chiron</td><td class="veh-tier-cell"><span class="tier-tag tier-2">Tier 2</span></td></tr><tr data-name="2022 bulatti chiron super sport 300+" data-tier="5"><td class="veh-name-cell">2022 Bulatti Chiron Super Sport 300+</td><td class="veh-tier-cell"><span class="tier-tag tier-5">Tier 5</span></td></tr><tr data-name="2010 css ultimate aero" data-tier="3"><td class="veh-name-cell">2010 CSS Ultimate Aero</td><td class="veh-tier-cell"><span class="tier-tag tier-3">Tier 3</span></td></tr><tr data-name="1997 dallinger xp gte" data-tier="3"><td class="veh-name-cell">1997 Dallinger XP GTE</td><td class="veh-tier-cell"><span class="tier-tag tier-3">Tier 3</span></td></tr><tr data-name="2021 edison roadster" data-tier="3"><td class="veh-name-cell">2021 Edison Roadster</td><td class="veh-tier-cell"><span class="tier-tag tier-3">Tier 3</span></td></tr><tr data-name="2016 ethanol venom gt" data-tier="4"><td class="veh-name-cell">2016 Ethanol Venom GT</td><td class="veh-tier-cell"><span class="tier-tag tier-4">Tier 4</span></td></tr><tr data-name="2021 ethanol venom f5" data-tier="5"><td class="veh-name-cell">2021 Ethanol Venom F5</td><td class="veh-tier-cell"><span class="tier-tag tier-5">Tier 5</span></td></tr><tr data-name="2014 furai lafurai" data-tier="4"><td class="veh-name-cell">2014 Furai LaFurai</td><td class="veh-tier-cell"><span class="tier-tag tier-4">Tier 4</span></td></tr><tr data-name="2014 koneggsaga agera r" data-tier="5"><td class="veh-name-cell">2014 Koneggsaga Agera R</td><td class="veh-tier-cell"><span class="tier-tag tier-5">Tier 5</span></td></tr><tr data-name="2015 koneggsaga one:" data-tier="5"><td class="veh-name-cell">2015 Koneggsaga One:</td><td class="veh-tier-cell"><span class="tier-tag tier-5">Tier 5</span></td></tr><tr data-name="2022 lunare intensa emozione" data-tier="4"><td class="veh-name-cell">2022 Lunare Intensa Emozione</td><td class="veh-tier-cell"><span class="tier-tag tier-4">Tier 4</span></td></tr><tr data-name="1998 mcfaren f1" data-tier="1"><td class="veh-name-cell">1998 McFaren F1</td><td class="veh-tier-cell"><span class="tier-tag tier-1">Tier 1</span></td></tr><tr data-name="2015 mcfaren p1" data-tier="3"><td class="veh-name-cell">2015 McFaren P1</td><td class="veh-tier-cell"><span class="tier-tag tier-3">Tier 3</span></td></tr><tr data-name="2020 mcfaren speedtail" data-tier="2"><td class="veh-name-cell">2020 McFaren Speedtail</td><td class="veh-tier-cell"><span class="tier-tag tier-2">Tier 2</span></td></tr><tr data-name="2018 paijani huayra" data-tier="2"><td class="veh-name-cell">2018 Paijani Huayra</td><td class="veh-tier-cell"><span class="tier-tag tier-2">Tier 2</span></td></tr><tr data-name="2015 pohrse 918 spyder roadster" data-tier="4"><td class="veh-name-cell">2015 Pohrse 918 Spyder Roadster</td><td class="veh-tier-cell"><span class="tier-tag tier-4">Tier 4</span></td></tr><tr data-name="2015 pohrse 918 weissach package" data-tier="5"><td class="veh-name-cell">2015 Pohrse 918 Weissach Package</td><td class="veh-tier-cell"><span class="tier-tag tier-5">Tier 5</span></td></tr>
+        </tbody>
+      </table>
     </div>
 
-    <div class="rules-panel veh-panel" id="cat-pick-up" data-count="5">
-      <div class="rules-panel-head">
-        <div class="num-icon">🛻</div>
+    <div class="veh-category" id="cat-pick-up" data-count="5">
+      <div class="veh-category-head">
+        <span class="cat-mono">PU</span>
         <div>
           <h2>Pick up</h2>
-          <span>Trucks & utility &middot; <span class="cat-count">5</span> banned</span>
+          <span class="cat-sub">Trucks & utility &middot; <span class="cat-count">5</span> listed</span>
         </div>
       </div>
-      <ul class="rule-list veh-list">
-        <li data-name="2021 dodje ram trx" data-tier="3"><span class="tier-badge tier-3">T3</span><span class="veh-name">2021 Dodje RAM TRX</span></li><li data-name="2020 fard f150" data-tier="2"><span class="tier-badge tier-2">T2</span><span class="veh-name">2020 Fard F150</span></li><li data-name="2021 hammer ev" data-tier="1"><span class="tier-badge tier-1">T1</span><span class="veh-name">2021 Hammer EV</span></li><li data-name="2020 jeff gladiator" data-tier="1"><span class="tier-badge tier-1">T1</span><span class="veh-name">2020 Jeff Gladiator</span></li><li data-name="2023 terra rancher" data-tier="1"><span class="tier-badge tier-1">T1</span><span class="veh-name">2023 Terra Rancher</span></li>
-      </ul>
+      <table class="veh-table">
+        <thead>
+          <tr><th>Vehicle</th><th>Classification</th></tr>
+        </thead>
+        <tbody>
+          <tr data-name="2021 dodje ram trx" data-tier="3"><td class="veh-name-cell">2021 Dodje RAM TRX</td><td class="veh-tier-cell"><span class="tier-tag tier-3">Tier 3</span></td></tr><tr data-name="2020 fard f150" data-tier="2"><td class="veh-name-cell">2020 Fard F150</td><td class="veh-tier-cell"><span class="tier-tag tier-2">Tier 2</span></td></tr><tr data-name="2021 hammer ev" data-tier="1"><td class="veh-name-cell">2021 Hammer EV</td><td class="veh-tier-cell"><span class="tier-tag tier-1">Tier 1</span></td></tr><tr data-name="2020 jeff gladiator" data-tier="1"><td class="veh-name-cell">2020 Jeff Gladiator</td><td class="veh-tier-cell"><span class="tier-tag tier-1">Tier 1</span></td></tr><tr data-name="2023 terra rancher" data-tier="1"><td class="veh-name-cell">2023 Terra Rancher</td><td class="veh-tier-cell"><span class="tier-tag tier-1">Tier 1</span></td></tr>
+        </tbody>
+      </table>
     </div>
 
-    <div class="rules-panel veh-panel" id="cat-powersports" data-count="3">
-      <div class="rules-panel-head">
-        <div class="num-icon">🏍️</div>
+    <div class="veh-category" id="cat-powersports" data-count="3">
+      <div class="veh-category-head">
+        <span class="cat-mono">PS</span>
         <div>
           <h2>Powersports</h2>
-          <span>Karts & bikes &middot; <span class="cat-count">3</span> banned</span>
+          <span class="cat-sub">Karts & motorcycles &middot; <span class="cat-count">3</span> listed</span>
         </div>
       </div>
-      <ul class="rule-list veh-list">
-        <li data-name="2017 shifter kart" data-tier="4"><span class="tier-badge tier-4">T4</span><span class="veh-name">2017 Shifter Kart</span></li><li data-name="2015 rental kart" data-tier="3"><span class="tier-badge tier-3">T3</span><span class="veh-name">2015 Rental Kart</span></li><li data-name="2019 kawisake ninja h2" data-tier="2"><span class="tier-badge tier-2">T2</span><span class="veh-name">2019 Kawisake Ninja H2</span></li>
-      </ul>
+      <table class="veh-table">
+        <thead>
+          <tr><th>Vehicle</th><th>Classification</th></tr>
+        </thead>
+        <tbody>
+          <tr data-name="2017 shifter kart" data-tier="4"><td class="veh-name-cell">2017 Shifter Kart</td><td class="veh-tier-cell"><span class="tier-tag tier-4">Tier 4</span></td></tr><tr data-name="2015 rental kart" data-tier="3"><td class="veh-name-cell">2015 Rental Kart</td><td class="veh-tier-cell"><span class="tier-tag tier-3">Tier 3</span></td></tr><tr data-name="2019 kawisake ninja h2" data-tier="2"><td class="veh-name-cell">2019 Kawisake Ninja H2</td><td class="veh-tier-cell"><span class="tier-tag tier-2">Tier 2</span></td></tr>
+        </tbody>
+      </table>
     </div>
 
-    <div class="rules-panel veh-panel" id="cat-sedan" data-count="12">
-      <div class="rules-panel-head">
-        <div class="num-icon">🚘</div>
+    <div class="veh-category" id="cat-sedan" data-count="12">
+      <div class="veh-category-head">
+        <span class="cat-mono">SD</span>
         <div>
           <h2>Sedan</h2>
-          <span>Four-door performance &middot; <span class="cat-count">12</span> banned</span>
+          <span class="cat-sub">Four-door performance &middot; <span class="cat-count">12</span> listed</span>
         </div>
       </div>
-      <ul class="rule-list veh-list">
-        <li data-name="2020 banthey flying spur" data-tier="1"><span class="tier-badge tier-1">T1</span><span class="veh-name">2020 Banthey Flying Spur</span></li><li data-name="2013 bnw m5" data-tier="3"><span class="tier-badge tier-3">T3</span><span class="veh-name">2013 BNW M5</span></li><li data-name="2019 bnw 530i" data-tier="2"><span class="tier-badge tier-2">T2</span><span class="veh-name">2019 BNW 530i</span></li><li data-name="2019 bnw m5" data-tier="4"><span class="tier-badge tier-4">T4</span><span class="veh-name">2019 BNW M5</span></li><li data-name="2016 chavy ss" data-tier="1"><span class="tier-badge tier-1">T1</span><span class="veh-name">2016 Chavy SS</span></li><li data-name="2021 dayton striker" data-tier="1"><span class="tier-badge tier-1">T1</span><span class="veh-name">2021 Dayton Striker</span></li><li data-name="2022 keya stinger gt2" data-tier="2"><span class="tier-badge tier-2">T2</span><span class="veh-name">2022 Keya Stinger GT2</span></li><li data-name="2011 mazeri quattroporte gts" data-tier="5"><span class="tier-badge tier-5">T5</span><span class="veh-name">2011 Mazeri Quattroporte GTS</span></li><li data-name="1990 muaraci-bens 190e 2.5-16 evolution ii" data-tier="1"><span class="tier-badge tier-1">T1</span><span class="veh-name">1990 Muaraci-Bens 190E 2.5-16 Evolution II</span></li><li data-name="2019 muaraci-maibach pullman" data-tier="5"><span class="tier-badge tier-5">T5</span><span class="veh-name">2019 Muaraci-Maibach Pullman</span></li><li data-name="2022 pohrse taycan turbo s" data-tier="1"><span class="tier-badge tier-1">T1</span><span class="veh-name">2022 Pohrse Taycan Turbo S</span></li><li data-name="2021 rolls rayce ghost" data-tier="5"><span class="tier-badge tier-5">T5</span><span class="veh-name">2021 Rolls Rayce Ghost</span></li>
-      </ul>
+      <table class="veh-table">
+        <thead>
+          <tr><th>Vehicle</th><th>Classification</th></tr>
+        </thead>
+        <tbody>
+          <tr data-name="2020 banthey flying spur" data-tier="1"><td class="veh-name-cell">2020 Banthey Flying Spur</td><td class="veh-tier-cell"><span class="tier-tag tier-1">Tier 1</span></td></tr><tr data-name="2013 bnw m5" data-tier="3"><td class="veh-name-cell">2013 BNW M5</td><td class="veh-tier-cell"><span class="tier-tag tier-3">Tier 3</span></td></tr><tr data-name="2019 bnw 530i" data-tier="2"><td class="veh-name-cell">2019 BNW 530i</td><td class="veh-tier-cell"><span class="tier-tag tier-2">Tier 2</span></td></tr><tr data-name="2019 bnw m5" data-tier="4"><td class="veh-name-cell">2019 BNW M5</td><td class="veh-tier-cell"><span class="tier-tag tier-4">Tier 4</span></td></tr><tr data-name="2016 chavy ss" data-tier="1"><td class="veh-name-cell">2016 Chavy SS</td><td class="veh-tier-cell"><span class="tier-tag tier-1">Tier 1</span></td></tr><tr data-name="2021 dayton striker" data-tier="1"><td class="veh-name-cell">2021 Dayton Striker</td><td class="veh-tier-cell"><span class="tier-tag tier-1">Tier 1</span></td></tr><tr data-name="2022 keya stinger gt2" data-tier="2"><td class="veh-name-cell">2022 Keya Stinger GT2</td><td class="veh-tier-cell"><span class="tier-tag tier-2">Tier 2</span></td></tr><tr data-name="2011 mazeri quattroporte gts" data-tier="5"><td class="veh-name-cell">2011 Mazeri Quattroporte GTS</td><td class="veh-tier-cell"><span class="tier-tag tier-5">Tier 5</span></td></tr><tr data-name="1990 muaraci-bens 190e 2.5-16 evolution ii" data-tier="1"><td class="veh-name-cell">1990 Muaraci-Bens 190E 2.5-16 Evolution II</td><td class="veh-tier-cell"><span class="tier-tag tier-1">Tier 1</span></td></tr><tr data-name="2019 muaraci-maibach pullman" data-tier="5"><td class="veh-name-cell">2019 Muaraci-Maibach Pullman</td><td class="veh-tier-cell"><span class="tier-tag tier-5">Tier 5</span></td></tr><tr data-name="2022 pohrse taycan turbo s" data-tier="1"><td class="veh-name-cell">2022 Pohrse Taycan Turbo S</td><td class="veh-tier-cell"><span class="tier-tag tier-1">Tier 1</span></td></tr><tr data-name="2021 rolls rayce ghost" data-tier="5"><td class="veh-name-cell">2021 Rolls Rayce Ghost</td><td class="veh-tier-cell"><span class="tier-tag tier-5">Tier 5</span></td></tr>
+        </tbody>
+      </table>
     </div>
 
-    <div class="rules-panel veh-panel" id="cat-super" data-count="53">
-      <div class="rules-panel-head">
-        <div class="num-icon">⚡</div>
+    <div class="veh-category" id="cat-super" data-count="53">
+      <div class="veh-category-head">
+        <span class="cat-mono">SP</span>
         <div>
           <h2>Super</h2>
-          <span>Supercar class &middot; <span class="cat-count">53</span> banned</span>
+          <span class="cat-sub">Supercar class &middot; <span class="cat-count">53</span> listed</span>
         </div>
       </div>
-      <ul class="rule-list veh-list">
-        <li data-name="2010 aero atom v8" data-tier="5"><span class="tier-badge tier-5">T5</span><span class="veh-name">2010 Aero Atom V8</span></li><li data-name="2010 alpha 8c competizione" data-tier="4"><span class="tier-badge tier-4">T4</span><span class="veh-name">2010 Alpha 8C Competizione</span></li><li data-name="2011 aristo m600" data-tier="3"><span class="tier-badge tier-3">T3</span><span class="veh-name">2011 Aristo M600</span></li><li data-name="2011 atone mira v12 vantage" data-tier="2"><span class="tier-badge tier-2">T2</span><span class="veh-name">2011 Atone Mira V12 Vantage</span></li><li data-name="2011 atone-mira one-77" data-tier="2"><span class="tier-badge tier-2">T2</span><span class="veh-name">2011 Atone-Mira One-77</span></li><li data-name="2018 atone mira db11" data-tier="1"><span class="tier-badge tier-1">T1</span><span class="veh-name">2018 Atone Mira DB11</span></li><li data-name="2020 atone-mira dbs superleggera" data-tier="2"><span class="tier-badge tier-2">T2</span><span class="veh-name">2020 Atone-Mira DBS Superleggera</span></li><li data-name="2021 atone mira vantage" data-tier="1"><span class="tier-badge tier-1">T1</span><span class="veh-name">2021 Atone Mira Vantage</span></li><li data-name="2017 axura nsx" data-tier="2"><span class="tier-badge tier-2">T2</span><span class="veh-name">2017 Axura NSX</span></li><li data-name="2015 bmc mono" data-tier="5"><span class="tier-badge tier-5">T5</span><span class="veh-name">2015 BMC Mono</span></li><li data-name="2023 chavy corvette z06" data-tier="3"><span class="tier-badge tier-3">T3</span><span class="veh-name">2023 Chavy Corvette Z06</span></li><li data-name="2023 chavy corvette z06 z07 package" data-tier="2"><span class="tier-badge tier-2">T2</span><span class="veh-name">2023 Chavy Corvette Z06 Z07 Package</span></li><li data-name="2013 ctm x-bow r" data-tier="5"><span class="tier-badge tier-5">T5</span><span class="veh-name">2013 CTM X-Bow R</span></li><li data-name="2017 daisen oni" data-tier="5"><span class="tier-badge tier-5">T5</span><span class="veh-name">2017 Daisen Oni</span></li><li data-name="2021 owdi r8 v10" data-tier="2"><span class="tier-badge tier-2">T2</span><span class="veh-name">2021 Owdi R8 V10</span></li><li data-name="2008 owdi r8" data-tier="5"><span class="tier-badge tier-5">T5</span><span class="veh-name">2008 Owdi R8</span></li><li data-name="2007 salane s7" data-tier="4"><span class="tier-badge tier-4">T4</span><span class="veh-name">2007 Salane S7</span></li><li data-name="2021 spritzer gt9" data-tier="3"><span class="tier-badge tier-3">T3</span><span class="veh-name">2021 Spritzer GT9</span></li><li data-name="spritzer 900" data-tier="5"><span class="tier-badge tier-5">T5</span><span class="veh-name">Spritzer 900</span></li><li data-name="2010 xynvo st1" data-tier="5"><span class="tier-badge tier-5">T5</span><span class="veh-name">2010 Xynvo ST1</span></li><li data-name="1998 dodje viper gts" data-tier="5"><span class="tier-badge tier-5">T5</span><span class="veh-name">1998 Dodje Viper GTS</span></li><li data-name="2010 dodje viper srt-10" data-tier="4"><span class="tier-badge tier-4">T4</span><span class="veh-name">2010 Dodje Viper SRT-10</span></li><li data-name="2010 dodje viper srt-10 acr-x" data-tier="3"><span class="tier-badge tier-3">T3</span><span class="veh-name">2010 Dodje Viper SRT-10 ACR-X</span></li><li data-name="2017 dodje viper srt" data-tier="1"><span class="tier-badge tier-1">T1</span><span class="veh-name">2017 Dodje Viper SRT</span></li><li data-name="2013 esperanza gta spano" data-tier="4"><span class="tier-badge tier-4">T4</span><span class="veh-name">2013 Esperanza GTA Spano</span></li><li data-name="2005 fard gt" data-tier="3"><span class="tier-badge tier-3">T3</span><span class="veh-name">2005 Fard GT</span></li><li data-name="2020 fard gt" data-tier="2"><span class="tier-badge tier-2">T2</span><span class="veh-name">2020 Fard GT</span></li><li data-name="2015 furai 458 italia" data-tier="1"><span class="tier-badge tier-1">T1</span><span class="veh-name">2015 Furai 458 Italia</span></li><li data-name="2016 furai f12" data-tier="2"><span class="tier-badge tier-2">T2</span><span class="veh-name">2016 Furai F12</span></li><li data-name="2019 furai 488 pista" data-tier="1"><span class="tier-badge tier-1">T1</span><span class="veh-name">2019 Furai 488 Pista</span></li><li data-name="2021 furai f8 tributo" data-tier="2"><span class="tier-badge tier-2">T2</span><span class="veh-name">2021 Furai F8 Tributo</span></li><li data-name="2022 furai sf90 stradale" data-tier="4"><span class="tier-badge tier-4">T4</span><span class="veh-name">2022 Furai SF90 Stradale</span></li><li data-name="2025 italica velocita" data-tier="5"><span class="tier-badge tier-5">T5</span><span class="veh-name">2025 Italica Velocita</span></li><li data-name="2025 italica velocita corsa" data-tier="2"><span class="tier-badge tier-2">T2</span><span class="veh-name">2025 Italica Velocita Corsa</span></li><li data-name="2003 lamburghina murcielago roadster" data-tier="2"><span class="tier-badge tier-2">T2</span><span class="veh-name">2003 Lamburghina Murcielago Roadster</span></li><li data-name="2008 lamburghina gallardo" data-tier="5"><span class="tier-badge tier-5">T5</span><span class="veh-name">2008 Lamburghina Gallardo</span></li><li data-name="2009 lamburghina reventon roadster" data-tier="4"><span class="tier-badge tier-4">T4</span><span class="veh-name">2009 Lamburghina Reventon Roadster</span></li><li data-name="2011 lamburghina aventador" data-tier="2"><span class="tier-badge tier-2">T2</span><span class="veh-name">2011 Lamburghina Aventador</span></li><li data-name="2011 lamburghina gallardo superleggera" data-tier="3"><span class="tier-badge tier-3">T3</span><span class="veh-name">2011 Lamburghina Gallardo Superleggera</span></li><li data-name="2018 lamburghina huracan performante" data-tier="2"><span class="tier-badge tier-2">T2</span><span class="veh-name">2018 Lamburghina Huracan Performante</span></li><li data-name="2005 mazeri mc-12" data-tier="3"><span class="tier-badge tier-3">T3</span><span class="veh-name">2005 Mazeri MC-12</span></li><li data-name="2015 mcfaren 675lt" data-tier="4"><span class="tier-badge tier-4">T4</span><span class="veh-name">2015 McFaren 675LT</span></li><li data-name="2016 mcfaren 650s" data-tier="5"><span class="tier-badge tier-5">T5</span><span class="veh-name">2016 McFaren 650S</span></li><li data-name="2016 mcfaren 650s spider" data-tier="2"><span class="tier-badge tier-2">T2</span><span class="veh-name">2016 McFaren 650S Spider</span></li><li data-name="2017 mcfaren 570gt" data-tier="5"><span class="tier-badge tier-5">T5</span><span class="veh-name">2017 McFaren 570GT</span></li><li data-name="2020 mcfaren 600lt" data-tier="5"><span class="tier-badge tier-5">T5</span><span class="veh-name">2020 McFaren 600LT</span></li><li data-name="2020 mcfaren gt" data-tier="3"><span class="tier-badge tier-3">T3</span><span class="veh-name">2020 McFaren GT</span></li><li data-name="2020 mcfaren senna" data-tier="2"><span class="tier-badge tier-2">T2</span><span class="veh-name">2020 McFaren Senna</span></li><li data-name="2022 mcfaren 765lt" data-tier="4"><span class="tier-badge tier-4">T4</span><span class="veh-name">2022 McFaren 765LT</span></li><li data-name="2009 muaraci-bens sl65 agm black series" data-tier="4"><span class="tier-badge tier-4">T4</span><span class="veh-name">2009 Muaraci-Bens SL65 AGM Black Series</span></li><li data-name="2013 muaraci-bens sls agm black series" data-tier="4"><span class="tier-badge tier-4">T4</span><span class="veh-name">2013 Muaraci-Bens SLS AGM Black Series</span></li><li data-name="2018 muaraci-agm gt r" data-tier="3"><span class="tier-badge tier-3">T3</span><span class="veh-name">2018 Muaraci-AGM GT R</span></li><li data-name="2021 muaraci-bens agm gt black series" data-tier="2"><span class="tier-badge tier-2">T2</span><span class="veh-name">2021 Muaraci-Bens AGM GT Black Series</span></li>
-      </ul>
+      <table class="veh-table">
+        <thead>
+          <tr><th>Vehicle</th><th>Classification</th></tr>
+        </thead>
+        <tbody>
+          <tr data-name="2010 aero atom v8" data-tier="5"><td class="veh-name-cell">2010 Aero Atom V8</td><td class="veh-tier-cell"><span class="tier-tag tier-5">Tier 5</span></td></tr><tr data-name="2010 alpha 8c competizione" data-tier="4"><td class="veh-name-cell">2010 Alpha 8C Competizione</td><td class="veh-tier-cell"><span class="tier-tag tier-4">Tier 4</span></td></tr><tr data-name="2011 aristo m600" data-tier="3"><td class="veh-name-cell">2011 Aristo M600</td><td class="veh-tier-cell"><span class="tier-tag tier-3">Tier 3</span></td></tr><tr data-name="2011 atone mira v12 vantage" data-tier="2"><td class="veh-name-cell">2011 Atone Mira V12 Vantage</td><td class="veh-tier-cell"><span class="tier-tag tier-2">Tier 2</span></td></tr><tr data-name="2011 atone-mira one-77" data-tier="2"><td class="veh-name-cell">2011 Atone-Mira One-77</td><td class="veh-tier-cell"><span class="tier-tag tier-2">Tier 2</span></td></tr><tr data-name="2018 atone mira db11" data-tier="1"><td class="veh-name-cell">2018 Atone Mira DB11</td><td class="veh-tier-cell"><span class="tier-tag tier-1">Tier 1</span></td></tr><tr data-name="2020 atone-mira dbs superleggera" data-tier="2"><td class="veh-name-cell">2020 Atone-Mira DBS Superleggera</td><td class="veh-tier-cell"><span class="tier-tag tier-2">Tier 2</span></td></tr><tr data-name="2021 atone mira vantage" data-tier="1"><td class="veh-name-cell">2021 Atone Mira Vantage</td><td class="veh-tier-cell"><span class="tier-tag tier-1">Tier 1</span></td></tr><tr data-name="2017 axura nsx" data-tier="2"><td class="veh-name-cell">2017 Axura NSX</td><td class="veh-tier-cell"><span class="tier-tag tier-2">Tier 2</span></td></tr><tr data-name="2015 bmc mono" data-tier="5"><td class="veh-name-cell">2015 BMC Mono</td><td class="veh-tier-cell"><span class="tier-tag tier-5">Tier 5</span></td></tr><tr data-name="2023 chavy corvette z06" data-tier="3"><td class="veh-name-cell">2023 Chavy Corvette Z06</td><td class="veh-tier-cell"><span class="tier-tag tier-3">Tier 3</span></td></tr><tr data-name="2023 chavy corvette z06 z07 package" data-tier="2"><td class="veh-name-cell">2023 Chavy Corvette Z06 Z07 Package</td><td class="veh-tier-cell"><span class="tier-tag tier-2">Tier 2</span></td></tr><tr data-name="2013 ctm x-bow r" data-tier="5"><td class="veh-name-cell">2013 CTM X-Bow R</td><td class="veh-tier-cell"><span class="tier-tag tier-5">Tier 5</span></td></tr><tr data-name="2017 daisen oni" data-tier="5"><td class="veh-name-cell">2017 Daisen Oni</td><td class="veh-tier-cell"><span class="tier-tag tier-5">Tier 5</span></td></tr><tr data-name="2021 owdi r8 v10" data-tier="2"><td class="veh-name-cell">2021 Owdi R8 V10</td><td class="veh-tier-cell"><span class="tier-tag tier-2">Tier 2</span></td></tr><tr data-name="2008 owdi r8" data-tier="5"><td class="veh-name-cell">2008 Owdi R8</td><td class="veh-tier-cell"><span class="tier-tag tier-5">Tier 5</span></td></tr><tr data-name="2007 salane s7" data-tier="4"><td class="veh-name-cell">2007 Salane S7</td><td class="veh-tier-cell"><span class="tier-tag tier-4">Tier 4</span></td></tr><tr data-name="2021 spritzer gt9" data-tier="3"><td class="veh-name-cell">2021 Spritzer GT9</td><td class="veh-tier-cell"><span class="tier-tag tier-3">Tier 3</span></td></tr><tr data-name="spritzer 900" data-tier="5"><td class="veh-name-cell">Spritzer 900</td><td class="veh-tier-cell"><span class="tier-tag tier-5">Tier 5</span></td></tr><tr data-name="2010 xynvo st1" data-tier="5"><td class="veh-name-cell">2010 Xynvo ST1</td><td class="veh-tier-cell"><span class="tier-tag tier-5">Tier 5</span></td></tr><tr data-name="1998 dodje viper gts" data-tier="5"><td class="veh-name-cell">1998 Dodje Viper GTS</td><td class="veh-tier-cell"><span class="tier-tag tier-5">Tier 5</span></td></tr><tr data-name="2010 dodje viper srt-10" data-tier="4"><td class="veh-name-cell">2010 Dodje Viper SRT-10</td><td class="veh-tier-cell"><span class="tier-tag tier-4">Tier 4</span></td></tr><tr data-name="2010 dodje viper srt-10 acr-x" data-tier="3"><td class="veh-name-cell">2010 Dodje Viper SRT-10 ACR-X</td><td class="veh-tier-cell"><span class="tier-tag tier-3">Tier 3</span></td></tr><tr data-name="2017 dodje viper srt" data-tier="1"><td class="veh-name-cell">2017 Dodje Viper SRT</td><td class="veh-tier-cell"><span class="tier-tag tier-1">Tier 1</span></td></tr><tr data-name="2013 esperanza gta spano" data-tier="4"><td class="veh-name-cell">2013 Esperanza GTA Spano</td><td class="veh-tier-cell"><span class="tier-tag tier-4">Tier 4</span></td></tr><tr data-name="2005 fard gt" data-tier="3"><td class="veh-name-cell">2005 Fard GT</td><td class="veh-tier-cell"><span class="tier-tag tier-3">Tier 3</span></td></tr><tr data-name="2020 fard gt" data-tier="2"><td class="veh-name-cell">2020 Fard GT</td><td class="veh-tier-cell"><span class="tier-tag tier-2">Tier 2</span></td></tr><tr data-name="2015 furai 458 italia" data-tier="1"><td class="veh-name-cell">2015 Furai 458 Italia</td><td class="veh-tier-cell"><span class="tier-tag tier-1">Tier 1</span></td></tr><tr data-name="2016 furai f12" data-tier="2"><td class="veh-name-cell">2016 Furai F12</td><td class="veh-tier-cell"><span class="tier-tag tier-2">Tier 2</span></td></tr><tr data-name="2019 furai 488 pista" data-tier="1"><td class="veh-name-cell">2019 Furai 488 Pista</td><td class="veh-tier-cell"><span class="tier-tag tier-1">Tier 1</span></td></tr><tr data-name="2021 furai f8 tributo" data-tier="2"><td class="veh-name-cell">2021 Furai F8 Tributo</td><td class="veh-tier-cell"><span class="tier-tag tier-2">Tier 2</span></td></tr><tr data-name="2022 furai sf90 stradale" data-tier="4"><td class="veh-name-cell">2022 Furai SF90 Stradale</td><td class="veh-tier-cell"><span class="tier-tag tier-4">Tier 4</span></td></tr><tr data-name="2025 italica velocita" data-tier="5"><td class="veh-name-cell">2025 Italica Velocita</td><td class="veh-tier-cell"><span class="tier-tag tier-5">Tier 5</span></td></tr><tr data-name="2025 italica velocita corsa" data-tier="2"><td class="veh-name-cell">2025 Italica Velocita Corsa</td><td class="veh-tier-cell"><span class="tier-tag tier-2">Tier 2</span></td></tr><tr data-name="2003 lamburghina murcielago roadster" data-tier="2"><td class="veh-name-cell">2003 Lamburghina Murcielago Roadster</td><td class="veh-tier-cell"><span class="tier-tag tier-2">Tier 2</span></td></tr><tr data-name="2008 lamburghina gallardo" data-tier="5"><td class="veh-name-cell">2008 Lamburghina Gallardo</td><td class="veh-tier-cell"><span class="tier-tag tier-5">Tier 5</span></td></tr><tr data-name="2009 lamburghina reventon roadster" data-tier="4"><td class="veh-name-cell">2009 Lamburghina Reventon Roadster</td><td class="veh-tier-cell"><span class="tier-tag tier-4">Tier 4</span></td></tr><tr data-name="2011 lamburghina aventador" data-tier="2"><td class="veh-name-cell">2011 Lamburghina Aventador</td><td class="veh-tier-cell"><span class="tier-tag tier-2">Tier 2</span></td></tr><tr data-name="2011 lamburghina gallardo superleggera" data-tier="3"><td class="veh-name-cell">2011 Lamburghina Gallardo Superleggera</td><td class="veh-tier-cell"><span class="tier-tag tier-3">Tier 3</span></td></tr><tr data-name="2018 lamburghina huracan performante" data-tier="2"><td class="veh-name-cell">2018 Lamburghina Huracan Performante</td><td class="veh-tier-cell"><span class="tier-tag tier-2">Tier 2</span></td></tr><tr data-name="2005 mazeri mc-12" data-tier="3"><td class="veh-name-cell">2005 Mazeri MC-12</td><td class="veh-tier-cell"><span class="tier-tag tier-3">Tier 3</span></td></tr><tr data-name="2015 mcfaren 675lt" data-tier="4"><td class="veh-name-cell">2015 McFaren 675LT</td><td class="veh-tier-cell"><span class="tier-tag tier-4">Tier 4</span></td></tr><tr data-name="2016 mcfaren 650s" data-tier="5"><td class="veh-name-cell">2016 McFaren 650S</td><td class="veh-tier-cell"><span class="tier-tag tier-5">Tier 5</span></td></tr><tr data-name="2016 mcfaren 650s spider" data-tier="2"><td class="veh-name-cell">2016 McFaren 650S Spider</td><td class="veh-tier-cell"><span class="tier-tag tier-2">Tier 2</span></td></tr><tr data-name="2017 mcfaren 570gt" data-tier="5"><td class="veh-name-cell">2017 McFaren 570GT</td><td class="veh-tier-cell"><span class="tier-tag tier-5">Tier 5</span></td></tr><tr data-name="2020 mcfaren 600lt" data-tier="5"><td class="veh-name-cell">2020 McFaren 600LT</td><td class="veh-tier-cell"><span class="tier-tag tier-5">Tier 5</span></td></tr><tr data-name="2020 mcfaren gt" data-tier="3"><td class="veh-name-cell">2020 McFaren GT</td><td class="veh-tier-cell"><span class="tier-tag tier-3">Tier 3</span></td></tr><tr data-name="2020 mcfaren senna" data-tier="2"><td class="veh-name-cell">2020 McFaren Senna</td><td class="veh-tier-cell"><span class="tier-tag tier-2">Tier 2</span></td></tr><tr data-name="2022 mcfaren 765lt" data-tier="4"><td class="veh-name-cell">2022 McFaren 765LT</td><td class="veh-tier-cell"><span class="tier-tag tier-4">Tier 4</span></td></tr><tr data-name="2009 muaraci-bens sl65 agm black series" data-tier="4"><td class="veh-name-cell">2009 Muaraci-Bens SL65 AGM Black Series</td><td class="veh-tier-cell"><span class="tier-tag tier-4">Tier 4</span></td></tr><tr data-name="2013 muaraci-bens sls agm black series" data-tier="4"><td class="veh-name-cell">2013 Muaraci-Bens SLS AGM Black Series</td><td class="veh-tier-cell"><span class="tier-tag tier-4">Tier 4</span></td></tr><tr data-name="2018 muaraci-agm gt r" data-tier="3"><td class="veh-name-cell">2018 Muaraci-AGM GT R</td><td class="veh-tier-cell"><span class="tier-tag tier-3">Tier 3</span></td></tr><tr data-name="2021 muaraci-bens agm gt black series" data-tier="2"><td class="veh-name-cell">2021 Muaraci-Bens AGM GT Black Series</td><td class="veh-tier-cell"><span class="tier-tag tier-2">Tier 2</span></td></tr>
+        </tbody>
+      </table>
     </div>
   </div>
 
@@ -752,16 +868,16 @@
     panel.classList.remove('open');
   }));
 
-  /* ---------- Banned Vehicles: search + tier filter ---------- */
+
+  /* ---------- Banned Vehicles: registry search + tier filter ---------- */
   (function(){
     const searchInput = document.getElementById('vehSearch');
-    const tierChips = document.querySelectorAll('.tier-chip');
-    const catChips = document.querySelectorAll('.cat-chip');
-    const rows = document.querySelectorAll('.veh-list li');
-    const panels = document.querySelectorAll('.veh-panel');
+    if(!searchInput) return;
+    const tierOpts = document.querySelectorAll('.tier-opt');
+    const rows = document.querySelectorAll('.veh-table tbody tr');
+    const categories = document.querySelectorAll('.veh-category');
     const visibleCountEl = document.getElementById('vehVisibleCount');
     const emptyMsg = document.getElementById('vehEmpty');
-    if(!searchInput) return;
 
     let activeTier = 'all';
 
@@ -769,17 +885,17 @@
       const q = searchInput.value.trim().toLowerCase();
       let visible = 0;
 
-      rows.forEach(li => {
-        const matchesText = q === '' || li.dataset.name.includes(q);
-        const matchesTier = activeTier === 'all' || li.dataset.tier === activeTier;
+      rows.forEach(row => {
+        const matchesText = q === '' || row.dataset.name.includes(q);
+        const matchesTier = activeTier === 'all' || row.dataset.tier === activeTier;
         const show = matchesText && matchesTier;
-        li.classList.toggle('filtered-out', !show);
+        row.classList.toggle('filtered-out', !show);
         if(show) visible++;
       });
 
-      panels.forEach(panel => {
-        const anyVisible = panel.querySelectorAll('.veh-list li:not(.filtered-out)').length > 0;
-        panel.classList.toggle('all-filtered', !anyVisible);
+      categories.forEach(cat => {
+        const anyVisible = cat.querySelectorAll('tbody tr:not(.filtered-out)').length > 0;
+        cat.classList.toggle('all-filtered', !anyVisible);
       });
 
       visibleCountEl.textContent = visible;
@@ -788,21 +904,12 @@
 
     searchInput.addEventListener('input', applyFilters);
 
-    tierChips.forEach(chip => {
-      chip.addEventListener('click', () => {
-        tierChips.forEach(c => c.classList.remove('active'));
-        chip.classList.add('active');
-        activeTier = chip.dataset.tier;
+    tierOpts.forEach(opt => {
+      opt.addEventListener('click', () => {
+        tierOpts.forEach(o => o.classList.remove('active'));
+        opt.classList.add('active');
+        activeTier = opt.dataset.tier;
         applyFilters();
-      });
-    });
-
-    catChips.forEach(chip => {
-      chip.addEventListener('click', () => {
-        const target = document.getElementById(chip.dataset.target);
-        if(target){
-          target.scrollIntoView({behavior:'smooth', block:'start'});
-        }
       });
     });
   })();
